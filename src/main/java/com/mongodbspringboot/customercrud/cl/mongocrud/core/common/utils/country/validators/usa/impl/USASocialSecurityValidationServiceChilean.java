@@ -1,11 +1,13 @@
-package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils;
+package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.impl;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.SocialSecurityNumberValidationException;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.NationalChileanIdValidationService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class USASocialSecurityValidationService {
+public class USASocialSecurityValidationServiceChilean implements NationalChileanIdValidationService {
 
+  @Override
   public void validate(String ssn) {
     if (!isValidSSNFormat(ssn)) {
       throw new SocialSecurityNumberValidationException("Invalid US Social Security Number format.");

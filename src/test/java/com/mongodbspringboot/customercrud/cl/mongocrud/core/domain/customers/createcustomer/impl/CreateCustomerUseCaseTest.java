@@ -1,7 +1,7 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.impl;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ValidationException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.CountryValidationService;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.CountryValidationService;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.controller.mocks.CreateCustomerRequestMock;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.controller.mocks.CustomerMock;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.controller.mocks.CustomerResponseMock;

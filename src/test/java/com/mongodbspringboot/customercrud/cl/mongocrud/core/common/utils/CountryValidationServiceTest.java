@@ -1,6 +1,9 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ValidationException;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.CountryValidationService;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.impl.ChileanRutValidationServiceChilean;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.impl.USASocialSecurityValidationServiceChilean;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -15,10 +18,10 @@ class CountryValidationServiceTest {
   private CountryValidationService countryValidationService;
 
   @Mock
-  private ChileanRutValidationService chileanRutValidationService;
+  private ChileanRutValidationServiceChilean chileanRutValidationService;
 
   @Mock
-  private USASocialSecurityValidationService usaSocialSecurityValidationService;
+  private USASocialSecurityValidationServiceChilean usaSocialSecurityValidationService;
 
   @BeforeEach
   void setUp() {

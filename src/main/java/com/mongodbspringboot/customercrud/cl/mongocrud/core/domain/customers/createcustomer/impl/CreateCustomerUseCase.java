@@ -1,6 +1,6 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.impl;
 
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.CountryValidationService;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.CountryValidationService;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.mapper.CustomerResponseMapper;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.model.CreateCustomerRequest;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.model.CustomerResponse;
