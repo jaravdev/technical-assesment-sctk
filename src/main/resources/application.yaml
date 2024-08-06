@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: customercrud
+  data:
+    mongodb:
+      uri: mongodb+srv://Cluster92234:SmRZWWpsUUFh@cluster92234.gefybc2.mongodb.net/myDatabase?retryWrites=true&w=majority
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
