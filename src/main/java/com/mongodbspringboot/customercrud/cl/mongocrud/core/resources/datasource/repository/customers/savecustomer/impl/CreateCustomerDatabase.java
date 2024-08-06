@@ -1,5 +1,6 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.resources.datasource.repository.customers.savecustomer.impl;
 
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.SaveCustomerDatabaseException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.mapper.CustomerResponseMapper;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.model.CreateCustomerRequest;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.resources.datasource.entities.Customer;
@@ -21,10 +22,13 @@ public class CreateCustomerDatabase implements SaveCustomerRepository {
 
   @Override
   public Customer saveCustomer(CreateCustomerRequest createCustomerRequest) {
-    Customer customer = customerResponseMapper.mapRequestToCustomerEntity(createCustomerRequest);
-    customer.setRegisterDate(LocalDateTime.now());
-    //agregar try catch?
-    return customerRepository.save(customer);
+    try {
+      Customer customer = customerResponseMapper.mapRequestToCustomerEntity(createCustomerRequest);
+      customer.setRegisterDate(LocalDateTime.now());
+      return customerRepository.save(customer);
+    } catch (Exception e) {
+      throw new SaveCustomerDatabaseException("Error saving customer to the database");
+    }
   }
 }
 
