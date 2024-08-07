@@ -1,4 +1,4 @@
-package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country;
+package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.enums;
 
 public enum ChileanRegionEnum {
   REGION_METROPOLITANA(1, "RM"),
