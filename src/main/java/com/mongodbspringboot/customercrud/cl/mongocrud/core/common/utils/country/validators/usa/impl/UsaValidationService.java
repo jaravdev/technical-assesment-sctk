@@ -1,7 +1,7 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.impl;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidUsaStateException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.UsaRegionEnum;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.enums.UsaRegionEnum;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.NationalUsaIdValidationService;
 import java.util.List;
 import org.springframework.stereotype.Service;

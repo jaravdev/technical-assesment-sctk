@@ -1,7 +1,7 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.impl;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidChileanRegionException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.ChileanRegionEnum;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.enums.ChileanRegionEnum;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.NationalChileanIdValidationService;
 import java.util.List;
 import org.springframework.stereotype.Service;
