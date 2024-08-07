@@ -25,6 +25,7 @@ public class CountryValidationService {
         chileanValidationService.validate(nationalNumberId);
         chileanValidationService.validateRegions(regions);
         break;
+      case "usa":
       case "united states":
         usaValidationService.validate(nationalNumberId);
         usaValidationService.validateRegions(regions);
