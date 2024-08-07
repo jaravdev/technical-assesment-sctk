@@ -1,11 +1,12 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.impl;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.SocialSecurityNumberValidationException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.NationalChileanIdValidationService;
+
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.NationalUsaIdValidationService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class USASocialSecurityValidationServiceChilean implements NationalChileanIdValidationService {
+public class USASocialSecurityValidationServiceChilean implements NationalUsaIdValidationService {
 
   @Override
   public void validate(String ssn) {
