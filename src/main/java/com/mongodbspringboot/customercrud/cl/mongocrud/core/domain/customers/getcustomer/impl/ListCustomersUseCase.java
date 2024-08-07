@@ -22,9 +22,7 @@ public class ListCustomersUseCase {
 
   public CustomerListResponse listAllCustomers() {
     List<Customer> customers = getCustomersRepository.findAllCustomers();
-    List<CustomerResponse> customerResponses = customers.stream()
-        .map(customerResponseMapper::mapCustomerEntityToCustomerResponse)
-        .collect(Collectors.toList());
+    List<CustomerResponse> customerResponses = customerResponseMapper.mapCustomerEntityListToCustomerResponseList(customers);
     CustomerListResponse response = new CustomerListResponse();
     response.setCustomers(customerResponses);
     return response;

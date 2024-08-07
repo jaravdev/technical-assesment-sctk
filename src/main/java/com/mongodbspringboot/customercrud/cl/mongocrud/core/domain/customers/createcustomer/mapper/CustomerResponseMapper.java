@@ -3,6 +3,8 @@ package com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.cr
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.model.CreateCustomerRequest;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.domain.customers.createcustomer.model.CustomerResponse;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.resources.datasource.entities.Customer;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -36,6 +38,12 @@ public class CustomerResponseMapper {
         .registerDate(customer.getRegisterDate())
         .nationalNumberId(customer.getNationalNumberId())
         .build();
+  }
+
+  public List<CustomerResponse> mapCustomerEntityListToCustomerResponseList(List<Customer> customers) {
+    return customers.stream()
+        .map(this::mapCustomerEntityToCustomerResponse)
+        .collect(Collectors.toList());
   }
 }
 

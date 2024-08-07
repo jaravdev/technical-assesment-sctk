@@ -13,9 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.mockito.ArgumentMatchers.any;
 import org.mockito.Mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
@@ -45,11 +43,11 @@ class ListCustomersUseCaseTest {
 
     CustomerResponse response1 = CustomerResponseMock.createCustomerResponseMock();
     CustomerResponse response2 = CustomerResponseMock.createCustomerFemaleResponseMock();
+    List<CustomerResponse> customerResponses = Arrays.asList(response1, response2);
 
     // WHEN
     when(getCustomersRepository.findAllCustomers()).thenReturn(customers);
-    when(customerResponseMapper.mapCustomerEntityToCustomerResponse(customer1)).thenReturn(response1);
-    when(customerResponseMapper.mapCustomerEntityToCustomerResponse(customer2)).thenReturn(response2);
+    when(customerResponseMapper.mapCustomerEntityListToCustomerResponseList(customers)).thenReturn(customerResponses);
 
     CustomerListResponse customerListResponse = listCustomersUseCase.listAllCustomers();
 
@@ -60,6 +58,6 @@ class ListCustomersUseCaseTest {
     assertEquals("Jane Smith", customerListResponse.getCustomers().get(1).getName());
 
     verify(getCustomersRepository).findAllCustomers();
-    verify(customerResponseMapper, times(2)).mapCustomerEntityToCustomerResponse(any(Customer.class));
+    verify(customerResponseMapper).mapCustomerEntityListToCustomerResponseList(customers);
   }
 }
