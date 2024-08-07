@@ -60,7 +60,8 @@ class CreateCustomerUseCaseTest {
     // THEN
     assertNotNull(response);
     assertEquals("John Doe", response.getName());
-    verify(countryValidationService).validateCustomer(request.getCountry(), request.getNationalNumberId());
+    verify(countryValidationService).validateCustomerByCountry(request.getCountry(), request.getNationalNumberId(),
+        request.getCities());
     verify(saveCustomerRepository).saveCustomer(any(CreateCustomerRequest.class));
   }
 
@@ -71,7 +72,7 @@ class CreateCustomerUseCaseTest {
 
     // WHEN
     doThrow(new ValidationException("Invalid SSN")).when(countryValidationService)
-        .validateCustomer(anyString(), anyString());
+        .validateCustomerByCountry(anyString(), anyString(), any());
 
     // THEN
     ValidationException exception = assertThrows(ValidationException.class, () -> {
@@ -79,7 +80,7 @@ class CreateCustomerUseCaseTest {
     });
 
     assertEquals("Invalid SSN", exception.getMessage());
-    verify(countryValidationService).validateCustomer(anyString(), anyString());
+    verify(countryValidationService).validateCustomerByCountry(anyString(), anyString(), any());
     verify(saveCustomerRepository, never()).saveCustomer(any(CreateCustomerRequest.class));
   }
 

@@ -1,7 +1,5 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country;
 
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidChileanRegionException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidUsaStateException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ValidationException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.NationalChileanIdValidationService;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.NationalUsaIdValidationService;
@@ -21,7 +19,7 @@ public class CountryValidationService {
     this.usaValidationService = usaValidationService;
   }
 
-  public void validateCustomer(String country, String nationalNumberId, List<String> regions) {
+  public void validateCustomerByCountry(String country, String nationalNumberId, List<String> regions) {
     switch (country.toLowerCase()) {
       case "chile":
         chileanValidationService.validate(nationalNumberId);
