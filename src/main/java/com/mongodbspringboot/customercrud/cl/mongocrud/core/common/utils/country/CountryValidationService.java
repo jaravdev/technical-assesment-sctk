@@ -1,31 +1,34 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country;
 
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ValidationException;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.impl.ChileanRutValidationServiceChilean;
-import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.impl.USASocialSecurityValidationServiceChilean;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.chile.NationalChileanIdValidationService;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.utils.country.validators.usa.NationalUsaIdValidationService;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CountryValidationService {
 
-  private final ChileanRutValidationServiceChilean chileanRutValidationService;
-  private final USASocialSecurityValidationServiceChilean usaSocialSecurityValidationService;
+  private final NationalChileanIdValidationService chileanValidationService;
+  private final NationalUsaIdValidationService usaValidationService;
 
   public CountryValidationService(
-      ChileanRutValidationServiceChilean chileanRutValidationService,
-      USASocialSecurityValidationServiceChilean usaSocialSecurityValidationService) {
-    this.chileanRutValidationService = chileanRutValidationService;
-    this.usaSocialSecurityValidationService = usaSocialSecurityValidationService;
+      NationalChileanIdValidationService chileanValidationService,
+      NationalUsaIdValidationService usaValidationService) {
+    this.chileanValidationService = chileanValidationService;
+    this.usaValidationService = usaValidationService;
   }
 
-  public void validateCustomer(String country, String nationalNumberId) {
+  public void validateCustomerByCountry(String country, String nationalNumberId, List<String> regions) {
     switch (country.toLowerCase()) {
       case "chile":
-        chileanRutValidationService.validate(nationalNumberId);
+        chileanValidationService.validate(nationalNumberId);
+        chileanValidationService.validateRegions(regions);
         break;
       case "united states":
       case "usa":
-        usaSocialSecurityValidationService.validate(nationalNumberId);
+        usaValidationService.validate(nationalNumberId);
+        usaValidationService.validateRegions(regions);
         break;
       default:
         throw new ValidationException("Country validation not supported: " + country);

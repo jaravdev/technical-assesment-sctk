@@ -21,6 +21,8 @@ public class CreateCustomerRequest {
   @NotEmpty(message = "Country cannot be empty")
   private String country;
 
+  @NotNull(message = "Cities cannot be null")
+  @NotEmpty(message = "Cities cannot be empty")
   private List<String> cities;
 
   @NotNull(message = "National number ID cannot be null")
