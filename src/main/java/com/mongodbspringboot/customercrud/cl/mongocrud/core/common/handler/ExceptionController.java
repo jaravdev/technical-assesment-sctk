@@ -3,6 +3,8 @@ package com.mongodbspringboot.customercrud.cl.mongocrud.core.common.handler;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ChileanRutValidationException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ErrorResponse;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.GetCustomerListDatabaseException;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidChileanRegionException;
+import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.InvalidUsaStateException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.SaveCustomerDatabaseException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.SocialSecurityNumberValidationException;
 import com.mongodbspringboot.customercrud.cl.mongocrud.core.common.exceptions.ValidationException;
@@ -52,6 +54,16 @@ public class ExceptionController {
 
   @ExceptionHandler(GetCustomerListDatabaseException.class)
   public ResponseEntity<String> handleSaveCustomerDatabaseException(GetCustomerListDatabaseException e) {
+    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(InvalidUsaStateException.class)
+  public ResponseEntity<String> handleInvalidUsaStateException(InvalidUsaStateException e) {
+    return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(InvalidChileanRegionException.class)
+  public ResponseEntity<String> handleInvalidUsaStateException(InvalidChileanRegionException e) {
     return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
   }
 }

@@ -22,12 +22,8 @@ public class CreateCustomerUseCase {
   }
 
   public CustomerResponse createCustomer(CreateCustomerRequest createCustomerRequest) {
-    countryValidationService.validateCustomer(createCustomerRequest.getCountry(), createCustomerRequest.getNationalNumberId());
+    countryValidationService.validateCustomer(createCustomerRequest.getCountry(), createCustomerRequest.getNationalNumberId(), createCustomerRequest.getCities());
 
     return customerResponseMapper.mapCustomerEntityToCustomerResponse(saveCustomerRepository.saveCustomer(createCustomerRequest));
   }
 }
-
-
-
-

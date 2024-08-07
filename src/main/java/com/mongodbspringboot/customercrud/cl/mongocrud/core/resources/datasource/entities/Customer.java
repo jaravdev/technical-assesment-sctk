@@ -1,6 +1,7 @@
 package com.mongodbspringboot.customercrud.cl.mongocrud.core.resources.datasource.entities;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +24,8 @@ public class Customer {
   @NotNull
   private String country;
 
+  @NotNull(message = "Cities cannot be null")
+  @NotEmpty(message = "Cities cannot be empty")
   private List<String> cities;
 
   private LocalDateTime registerDate;
